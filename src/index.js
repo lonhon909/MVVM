@@ -14,14 +14,6 @@ class ParentComponent {
     this.localState = 'one'
 
   }
-  // mounted() {
-  //   // 两秒钟后将 localState 的值修改为 'two'
-  //   setTimeout(() => {
-  //     this.localState = 'two'
-  //     this._update()
-  //   }, 2000)
-  // }
-
   render() {
     return h('div', null, [
       h('span', null, 1),
@@ -31,28 +23,21 @@ class ParentComponent {
   }
 }
 
-// 有状态组件 VNode
-const compVNode = h('div', null, [
-  h('span', {
-    style: {
-      color: 'blue'
-    },
-    class: []
-  }, 1),
-  h('span', null, 2),
-  h('span', null, 3),
-])
-const compVNode2 = h('div', null, [
-  h('span', null, 2),
-  h('span', null, 1),
-  h('span', {
-    style: {
-      color: 'red'
-    }
-  }, 3),
-  h('span', null, 4)
-])
-render(compVNode, document.getElementById('app'))
-setTimeout(() => {
-render(compVNode2, document.getElementById('app')) 
-}, 2000)
+const list = [
+  {
+    id: "number",
+    value: "Number"
+  },
+  {
+    id: "string",
+    value: "String"
+  },
+  {
+    id: "boolean",
+    value: "Boolean"
+  }
+]
+
+const vnode = h('ul', null, list.map(item => h('li', { key: item.id }, item.value)))
+
+console.log(vnode)
